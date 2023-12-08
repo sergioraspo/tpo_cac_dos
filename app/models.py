@@ -10,21 +10,26 @@ class Person(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Evento(models.Model):
-    TIPO_CHOICES = [
-        ('C', 'Casamiento'),
-        ('O', 'Corporativas'),
+    CASAMIENTO = 'CM'
+    COMUNION = 'CO'
+    FIESTA_15 = 'F15'
+    BABY_SHOWER = 'BS'
+    CORPORATIVA = 'CP'
+    TIPOS_DE_EVENTO = [
+        (CASAMIENTO, 'Casamiento'),
+        (COMUNION, 'Comunión'),
+        (FIESTA_15, 'Fiesta de 15 años'),
+        (BABY_SHOWER, 'Baby Shower'),
+        (CORPORATIVA, 'Corporativa'),
     ]
-    HORARIO_CHOICES = [
-        ('V', 'Vespertino'),
-        ('N', 'Nocturno'),
-    ]
-    tipo = models.CharField(max_length=1, choices=TIPO_CHOICES)
-    fecha_evento = models.DateField(auto_now=False, auto_now_add=False)
-    horario = models.CharField(max_length=1, choices=HORARIO_CHOICES)
+    tipo_de_evento = models.CharField(
+        max_length=3,
+        choices=TIPOS_DE_EVENTO,
+        default=CASAMIENTO,
+    )
 
-    def __str__(self):
-        return f"{self.tipo} - {self.fecha_evento} - {self.horario}" 
-
+    def evento(self):
+        return self.tipo_de_evento in {self.CASAMIENTO, self.CORPORATIVA}    
 
 class Opciones(models.Model):
     TIPO_CHOICES = [
