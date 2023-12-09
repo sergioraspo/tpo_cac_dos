@@ -3,7 +3,7 @@ from app.models import Person
 from app.models import Evento
 from app.models import Opciones
 
-class PersonSerializer(serializers.ModelSerializer):
+class PersonaSerializer(serializers.ModelSerializer):
    
     class Meta:
         #Indico con que modelo se va a corresponder el serializador
