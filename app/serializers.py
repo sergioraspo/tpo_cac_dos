@@ -3,7 +3,7 @@ from app.models import Person
 from app.models import Evento
 from app.models import Opciones
 
-class PersonaSerializer(serializers.ModelSerializer):
+class PersonSerializer(serializers.ModelSerializer):
    
     class Meta:
         #Indico con que modelo se va a corresponder el serializador
@@ -19,7 +19,7 @@ class EventoSerializer(serializers.ModelSerializer):
         #listado defino los campos de la clase Movie que quiero serializar
         fields = ['Casamiento','Comunion', 'Fiesta de 15 años', 'Baby Shower', 'Corporativa']        
 
-class PersonSerializer(serializers.ModelSerializer):
+class OpcionesSerializer(serializers.ModelSerializer):
    
     class Meta:
         #Indico con que modelo se va a corresponder el serializador
